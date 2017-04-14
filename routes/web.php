@@ -11,13 +11,32 @@
 |
 */
 
-Auth::routes();
+use Illuminate\Support\Facades\Route;
 
-Route::get('/home', 'HomeController@index');
+Auth::routes();
+Route::get('admin_login', 'AdminAuth\LoginController@showLoginForm');
+Route::post('admin_login', 'AdminAuth\LoginController@login');
+Route::post('admin_login', 'AdminAuth\LoginController@logout');
+Route::post('admin_password/email', 'AdminAuth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('admin_password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm');
+Route::post('admin_password/reset', 'AdminAuth\ResetPasswordController@reset');
+Route::get('admin_password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
+Route::get('admin_register', 'AdminAuth\RegisterController@showRegisterForm');
+Route::post('admin_register', 'AdminAuth\RegisterController@register');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('admin')->group(function (){
+	Route::get('/', 'AdminHomeController@index')->name('admin.dashboard');
+	Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('admin.login');
+	Route::post('/login', 'AdminAuth\LoginController@login')->name('admin.login.submit');
+});
 
 Route::get('/', function(){
-    return view('main');
+	return view('main');
 });
+
+
 
 Route::get('/contact', function(){
 	return view('contact');
