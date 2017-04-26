@@ -44,6 +44,7 @@
                         </tbody>
                     </table>
                 </section>
+                <a class="btn btn-primary" href="{{route('admin.restaurantAdd')}}" title="Bootstrap 3 themes generator">Add restaurant</a>
             </div>
         </section>
         <!-- project team & activity end -->
