@@ -94,7 +94,7 @@ $dishes = Dish::all();
 		<div class="col-sm-offset-3 col-sm-10">
 			<button type="submit" class="btn btn-primary">Add new restaurant</button>
 		</div>
-	</div
+	</div>
 </form>
 
 

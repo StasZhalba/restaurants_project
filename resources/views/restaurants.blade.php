@@ -12,7 +12,7 @@
 	
     @if(isset($restaurants))
 
-		<table class="table table-striped" style="text-align: center; width: 60%; margin: auto;">
+		<table class="table table-striped" style="text-align: center; width: 80%; margin: auto;">
 			<tr>
 				<td>
 					Name
@@ -41,25 +41,41 @@
 					</a>
 				</td>
 				<td></td>
-				
+				<td></td>
+
 			</tr>
 	        @foreach($restaurants as $restaurant)
 	            <tr>
-	            	<td>
+					<td>
+						<img src="/uploads/{{$restaurant->image()->fileName}}" width="150">
+					</td>
+					<td style="padding-top: 8%; font-size: 25px">
 		            	<a href="/restaurants/{{ $restaurant->id }}">
 		            		{{ $restaurant->restaurant_name }} →
 		            	</a>
 	            	</td>
-	            	<td>{{ $restaurant->rating }}</td>
+	            	<td style="padding-top: 8%;">
+						<div>
+							<img src="/img/icons/rating-icon.png" height="18">
+							<span>{{ $restaurant->rating }}</span>
+						</div>
+						<br>
+						<div style="margin-top: 30%;">
+							<img src="/img/icons/views-icon.png" height="18">
+							<span style="color: #909399; font-size: 15px;">{{$restaurant->views}}</span>
+						</div>
+					</td>
 					<td> 
-						@include('auth.del_rest_button') 
+						@include('auth.del_rest_button')
 					</td>
 				</tr>
 	        @endforeach
 	    </table>
-    	
+		{{$restaurants->links()}}
+
     @endif
 
-    @include('errors')
+
+	@include('errors')
 
 @endsection

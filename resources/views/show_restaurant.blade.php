@@ -24,7 +24,7 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">	
 			<div class="item active">
-				<p class="text-center"><img src="/uploads/{{ $restaurant->fileName }}"></p>
+				<p class="text-center"><img src="uploads/{{ $restaurant->fileName }}"></p>
 				<div class="carousel-caption">
 					{{ $restaurant->restaurant_name }}
 				</div>

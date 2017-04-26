@@ -21,5 +21,9 @@ class Restaurant extends Model
 	public function ratings(){
         return $this->hasMany('App\Rating', 'restaurantId');
     }
+
+    public function image(){
+		return Image::where('restaurantId', $this->id)->get()[0];
+    }
     /*********************************/
 }

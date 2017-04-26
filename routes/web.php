@@ -26,10 +26,13 @@ Route::post('admin_register', 'AdminAuth\RegisterController@register');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::prefix('admin')->group(function (){
 	Route::get('/', 'AdminHomeController@index')->name('admin.dashboard');
 	Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'AdminAuth\LoginController@login')->name('admin.login.submit');
+	Route::get('/restaurants', 'AdminHomeController@restaurants')->name('admin.restaurants');
+	Route::get('/restaurants/add', 'AdminHomeController@restaurantAdd')->name('admin.restaurantAdd');
 });
 
 Route::get('/', function(){
@@ -53,7 +56,7 @@ Route::get('/add_restaurant', function(){
 	return view('add_restaurant');
 });
 
-Route::post('/add_restaurant/store', 'RestaurantController@store');
+Route::post('/add_restaurant/store', 'RestaurantController@store')->name('admin.addRestaurant');
 
 Route::get('/restaurants/{del_rest_id}/delete', 'RestaurantController@delete');
 

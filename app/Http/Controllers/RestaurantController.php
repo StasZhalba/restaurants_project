@@ -34,7 +34,7 @@ class RestaurantController extends Controller
 
     public function index()
     {
-    	$restaurants = Restaurant::all();
+    	$restaurants = Restaurant::paginate(5);
     	return view('restaurants', compact('restaurants'));
     }
 
@@ -51,6 +51,8 @@ class RestaurantController extends Controller
             ->leftJoin('restaurants', 'comments.restaurant_id', 'restaurants.id')
             ->leftJoin('users', 'comments.user_id', 'users.id')
                 ->where('restaurant_id', $restaurant->id)->get();
+
+        DB::table('restaurants')->whereId($restaurant->id)->increment('views');
 
         return view('show_restaurant', compact(['restaurants', 'restaurant', 'comments']));
     }

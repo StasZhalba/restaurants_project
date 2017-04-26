@@ -3,7 +3,7 @@
 
 <div class="container">
 
-    <form class="login-form" role="form" method="POST" action="{{ route('admin.login.submit') }}">
+    <form class="login-form" role="form" method="post" action="{{ route('admin.login.submit') }}">
         {{ csrf_field() }}
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
