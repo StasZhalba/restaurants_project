@@ -31,11 +31,9 @@ class AdminHomeController extends Controller
     }
 
     public function restaurants(){
-		$cuis = Cuisine::all();
-	    $dishes = Dish::all();
+		$restaurants = Restaurant::all();
 		return view('admin.restaurants', [
-			'cuisines' => $cuis,
-			'dishes' => $dishes,
+			'restaurants' => $restaurants,
 		]);
     }
 
@@ -57,16 +55,16 @@ class AdminHomeController extends Controller
 			'restaurant_seats' => 'required',
 			'restaurant_owner' => 'required',
 			'image' => 'required',
-			'description' => 'required'
+			'restaurant_description' => 'required'
 		]);
 		$restaurant = new Restaurant;
-		$restaurant->restaurant_name = request('restaurant_name');
-		$restaurant->cuisine_id = request('cuisine_id');
+		$restaurant->restaurant_name = $request->restaurant_name;
+		$restaurant->cuisine_id = $request->cuisine_id;
 		$restaurant->user_id = auth()->id();
-		$restaurant->restaurant_address = request('restaurant_address');
-		$restaurant->restaurant_seats = request('restaurant_seats');
-		$restaurant->restaurant_owner = request('restaurant_owner');
-		$restaurant->description = request('description');
+		$restaurant->restaurant_address = $request->restaurant_address;
+		$restaurant->restaurant_seats = $request->restaurant_seats;
+		$restaurant->restaurant_owner = $request->restaurant_owner;
+		$restaurant->description = $request->restaurant_description;
 		$restaurant->save();
 
 		if ($request->hasFile('image')){
@@ -90,6 +88,7 @@ class AdminHomeController extends Controller
 				$menu->save();
 			}
 		}
+
 
 		return view('add_restaurant', compact('restaurant'));
 	}

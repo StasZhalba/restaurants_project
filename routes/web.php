@@ -58,7 +58,7 @@ Route::get('/add_restaurant', function(){
 	return view('add_restaurant');
 });
 
-Route::post('/add_restaurant/store', 'RestaurantController@store')->name('admin.addRestaurant');
+Route::post('/add_restaurant/store', 'RestaurantController@store');
 
 Route::get('/restaurants/{del_rest_id}/delete', 'RestaurantController@delete');
 

@@ -17,13 +17,13 @@
 
                             <div class="form quick-post">
                                 <!-- Edit profile form (not working)-->
-                                <form class="form-horizontal" method="post" action="{{route('admin.addRestaurant')}}">
+                                <form class="form-horizontal" method="post" action="{{route('admin.restaurantStore')}}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <!-- Title -->
                                     <div class="form-group">
                                         <label class="control-label col-lg-2" for="restaurant_name">Restaurant name</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="restaurant_name">
+                                            <input type="text" class="form-control" id="restaurant_name" name="restaurant_name">
                                         </div>
                                     </div>
                                     <!-- Cuisine -->
@@ -54,21 +54,21 @@
                                     <div class="form-group">
                                         <label for="restaurant_address" class="control-label col-lg-2" for="content">Restaurant address</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="restaurant_address">
+                                            <input type="text" class="form-control" id="restaurant_address" name="restaurant_address">
                                         </div>
                                     </div>
                                     <!-- Seats -->
                                     <div class="form-group">
                                         <label for="restaurant_seats" class="control-label col-lg-2" for="content">Restaurant seats</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="restaurant_seats">
+                                            <input type="text" class="form-control" id="restaurant_seats" name="restaurant_seats">
                                         </div>
                                     </div>
                                     <!-- Owner -->
                                     <div class="form-group">
                                         <label for="restaurant_owner" class="control-label col-lg-2" for="content">Restaurant owner</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="restaurant_owner">
+                                            <input type="text" class="form-control" id="restaurant_owner" name="restaurant_owner">
                                         </div>
                                     </div>
                                     {{--Images--}}
@@ -80,9 +80,9 @@
                                     </div>
                                     {{--Content--}}
                                     <div class="form-group">
-                                        <label class="control-label col-lg-2" for="description">Description</label>
+                                        <label class="control-label col-lg-2" for="restaurant_description">Description</label>
                                         <div class="col-lg-10">
-                                            <textarea class="form-control" id="description"></textarea>
+                                            <textarea class="form-control" id="restaurant_description" name="restaurant_description"></textarea>
                                         </div>
                                     </div>
 

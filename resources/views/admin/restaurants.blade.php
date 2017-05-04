@@ -3,7 +3,7 @@
 @section('content')
     <section id="main-content">
         <section class="wrapper">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
                         Hover Table
@@ -11,36 +11,24 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
+                            <th>Restaurant name</th>
+                            <th>Cuisine</th>
+                            <th>Author</th>
+                            <th>Address</th>
+                            <th>Seats</th>
+                            <th>Owner</th>
+                            <th>Description</th>
+                            <th>Rating</th>
+                            <th>Updated</th>
+                            <th>Views</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($restaurants as $restaurant)
                         <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td>{{$restaurant->restaurant_name}}</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Sumon</td>
-                            <td>Mosa</td>
-                            <td>@twitter</td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </section>
