@@ -90,7 +90,36 @@ class AdminHomeController extends Controller
 		}
 
 
-		return view('add_restaurant', compact('restaurant'));
+		return redirect(route('admin.restaurants'));
+	}
+
+	public function delete($del_rest_id)
+	{
+		$del_rest_row = Restaurant::select('restaurant_name')->where('id', $del_rest_id)->get();
+		$del_rest = $del_rest_row[0];
+		$del_rest_name = $del_rest->restaurant_name;
+		Restaurant::where('id', $del_rest_id)->delete();
+		$images = Image::where('restaurantId', $del_rest_id)->get();
+		foreach ($images as $image) {
+			Storage::disk('uploads')->delete($image->fileName);
+			Image::where('restaurantId', $del_rest_id)->delete();
+			Menu::where('restaurant_id', $del_rest_id)->delete();
+		}
+
+		return view('restaurants', compact('del_rest_name'));
+	}
+
+	public function edit($id){
+		$cuisines = Cuisine::all();
+		$dishes = Dish::all();
+    	$restaurant = Restaurant::find($id);
+
+    	return view('admin.editRestaurant', [
+    		'restaurant' => $restaurant,
+		    'cuisines' => $cuisines,
+		    'dishes' => $dishes,
+
+	    ]);
 	}
 
     public function dashboard(){

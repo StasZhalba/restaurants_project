@@ -16,8 +16,10 @@ class CreateMenusTable extends Migration
         Schema::create('menus', function(Blueprint $table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('restaurant_id');
-            $table->integer('dish_id');
+            $table->integer('restaurant_id')->unsigned();
+            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->integer('dish_id')->unsigned();
+            $table->foreign('dish_id')->references('id')->on('dishes');
             $table->timestamps();
         });
     }

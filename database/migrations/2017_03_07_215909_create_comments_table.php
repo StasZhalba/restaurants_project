@@ -16,8 +16,10 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function(Blueprint $table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('restaurant_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('restaurant_id')->unsigned();
+            $table->foreign('restaurant_id')->references('id')->on('restaurants');
             $table->text('body');
             $table->timestamps();
         });

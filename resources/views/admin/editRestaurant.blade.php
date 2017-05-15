@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-lg-2" for="restaurant_name">Restaurant name</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="restaurant_name" name="restaurant_name">
+                                            <input type="text" class="form-control" id="restaurant_name" name="restaurant_name" value="{{$restaurant->restaurant_name}}">
                                         </div>
                                     </div>
                                     <!-- Cuisine -->
@@ -33,7 +33,11 @@
                                             <select class="form-control" name="cuisine_id" required>
                                                 <option value="">- Choose Cuisines -</option>
                                                 @foreach($cuisines as $c)
-                                                    <option value="{{ $c->id }}">{{ $c->cuisine_name }}</option>
+                                                    @if($restaurant->cuisine->id == $c->id)
+                                                        <option value="{{ $c->id }}" selected>{{ $c->cuisine_name }}</option>
+                                                    @else
+                                                        <option value="{{ $c->id }}">{{ $c->cuisine_name }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -54,21 +58,21 @@
                                     <div class="form-group">
                                         <label for="restaurant_address" class="control-label col-lg-2" for="content">Restaurant address</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="restaurant_address" name="restaurant_address">
+                                            <input type="text" class="form-control" id="restaurant_address" name="restaurant_address" value="{{$restaurant->restaurant_address}}">
                                         </div>
                                     </div>
                                     <!-- Seats -->
                                     <div class="form-group">
                                         <label for="restaurant_seats" class="control-label col-lg-2" for="content">Restaurant seats</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="restaurant_seats" name="restaurant_seats">
+                                            <input type="text" class="form-control" id="restaurant_seats" name="restaurant_seats" value="{{$restaurant->restaurant_seats}}">
                                         </div>
                                     </div>
                                     <!-- Owner -->
                                     <div class="form-group">
                                         <label for="restaurant_owner" class="control-label col-lg-2" for="content">Restaurant owner</label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="restaurant_owner" name="restaurant_owner">
+                                            <input type="text" class="form-control" id="restaurant_owner" name="restaurant_owner" value="{{$restaurant->restaurant_owner}}">
                                         </div>
                                     </div>
                                     {{--Images--}}
@@ -82,7 +86,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-lg-2" for="restaurant_description">Description</label>
                                         <div class="col-lg-10">
-                                            <textarea class="form-control" id="restaurant_description" name="restaurant_description"></textarea>
+                                            <textarea class="form-control" id="restaurant_description" name="restaurant_description">{{$restaurant->description}}</textarea>
                                         </div>
                                     </div>
 

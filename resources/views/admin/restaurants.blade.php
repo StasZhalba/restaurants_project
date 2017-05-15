@@ -15,24 +15,32 @@
                             <th>Cuisine</th>
                             <th>Author</th>
                             <th>Address</th>
-                            <th>Seats</th>
-                            <th>Owner</th>
-                            <th>Description</th>
                             <th>Rating</th>
                             <th>Updated</th>
                             <th>Views</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($restaurants as $restaurant)
                         <tr>
                             <td>{{$restaurant->restaurant_name}}</td>
+                            <td>{{$restaurant->cuisine->cuisine_name}}</td>
+                            <td>{{$restaurant->user->name}}</td>
+                            <td>{{$restaurant->restaurant_address}}</td>
+                            <td>{{$restaurant->rating}}</td>
+                            <td>{{$restaurant->updated_at}}</td>
+                            <td>{{$restaurant->views}}</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="" >Edit</a>
+                                <a class="btn btn-danger btn-sm" href="{{route('admin.restaurantDelete')}}" >Delete</a>
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </section>
-                <a class="btn btn-primary" href="{{route('admin.restaurantAdd')}}" title="Bootstrap 3 themes generator">Add restaurant</a>
+                <a class="btn btn-success" href="{{route('admin.restaurantAdd')}}" >Add restaurant</a>
             </div>
         </section>
         <!-- project team & activity end -->

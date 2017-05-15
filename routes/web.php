@@ -34,7 +34,8 @@ Route::prefix('admin')->group(function (){
 	Route::get('/restaurants', 'AdminHomeController@restaurants')->name('admin.restaurants');
 	Route::get('/restaurants/add', 'AdminHomeController@restaurantAdd')->name('admin.restaurantAdd');
 	Route::post('/add_restaurant/store', 'AdminHomeController@store')->name('admin.restaurantStore');
-
+	Route::get('/restaurants/{del_rest_id}/delete', 'AdminHomeController@delete')->name('admin.restaurantDelete');
+	Route::get('/restaurants/edit/{id}', 'AdminHomeController@edit')->name('admin.restaurantEdit');
 });
 
 Route::get('/', function(){
