@@ -32,8 +32,8 @@
                             <td>{{$restaurant->updated_at}}</td>
                             <td>{{$restaurant->views}}</td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="" >Edit</a>
-                                <a class="btn btn-danger btn-sm" href="{{route('admin.restaurantDelete')}}" >Delete</a>
+                                <a class="btn btn-primary btn-sm" href="{{route('admin.restaurantEdit', ['id' => $restaurant->id])}}" >Edit</a>
+                                <a class="btn btn-danger btn-sm" href="{{route('admin.restaurantDelete', ['id' => $restaurant->id])}}" >Delete</a>
                             </td>
                         </tr>
                         @endforeach

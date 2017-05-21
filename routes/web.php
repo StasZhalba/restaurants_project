@@ -34,8 +34,11 @@ Route::prefix('admin')->group(function (){
 	Route::get('/restaurants', 'AdminHomeController@restaurants')->name('admin.restaurants');
 	Route::get('/restaurants/add', 'AdminHomeController@restaurantAdd')->name('admin.restaurantAdd');
 	Route::post('/add_restaurant/store', 'AdminHomeController@store')->name('admin.restaurantStore');
+	Route::put('/restaurant/{id}/save/', 'AdminHomeController@saveRestaurant')->name('admin.restaurantSave');
 	Route::get('/restaurants/{del_rest_id}/delete', 'AdminHomeController@delete')->name('admin.restaurantDelete');
 	Route::get('/restaurants/edit/{id}', 'AdminHomeController@edit')->name('admin.restaurantEdit');
+	Route::get('/restaurants/edit/{id}/img', 'AdminHomeController@editImg')->name('admin.restaurantEditImg');
+	Route::get('/restaurants/delete/img/{id}', 'AdminHomeController@deleteImg')->name('admin.restaurantDeleteImg');
 });
 
 Route::get('/', function(){

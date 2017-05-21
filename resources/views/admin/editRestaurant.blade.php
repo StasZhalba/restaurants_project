@@ -17,8 +17,9 @@
 
                             <div class="form quick-post">
                                 <!-- Edit profile form (not working)-->
-                                <form class="form-horizontal" method="post" action="{{route('admin.restaurantStore')}}" enctype="multipart/form-data">
-                                {{ csrf_field() }}
+                                {{--<form class="form-horizontal" method="post" action="{{route('admin.restaurantStore')}}" enctype="multipart/form-data">--}}
+                                {{ Form::model($restaurant, array('route' => array('admin.restaurantSave', $restaurant->id), 'method' => 'PUT', 'class' => 'form-horizontal')) }}
+                                {{--{{ csrf_field() }}--}}
                                 <!-- Title -->
                                     <div class="form-group">
                                         <label class="control-label col-lg-2" for="restaurant_name">Restaurant name</label>
@@ -79,14 +80,14 @@
                                     <div class="form-group">
                                         <label for="image" class="control-label col-lg-2">Choose image</label>
                                         <div class="col-lg-10">
-                                            <input type="file" name="image[]" multiple accept="image/*" required>
+                                            <input type="file" name="image[]" multiple accept="image/*">
                                         </div>
                                     </div>
                                     {{--Content--}}
                                     <div class="form-group">
                                         <label class="control-label col-lg-2" for="restaurant_description">Description</label>
                                         <div class="col-lg-10">
-                                            <textarea class="form-control" id="restaurant_description" name="restaurant_description">{{$restaurant->description}}</textarea>
+                                            <textarea class="form-control" id="restaurant_description" name="restaurant_description" rows="4">{{$restaurant->description}}</textarea>
                                         </div>
                                     </div>
 
@@ -95,10 +96,12 @@
                                         <!-- Buttons -->
                                         <div class="col-lg-offset-2 col-lg-9">
                                             <button type="submit" class="btn btn-primary">Save</button>
-                                            <button type="reset" class="btn btn-default">Reset</button>
+                                            <a class="btn btn-info popovers">Delete images</a>
+
                                         </div>
                                     </div>
-                                </form>
+                                {{--</form>--}}
+                                {{ Form::close() }}
                             </div>
 
 

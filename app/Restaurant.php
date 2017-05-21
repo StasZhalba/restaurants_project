@@ -25,6 +25,10 @@ class Restaurant extends Model
 		return Image::where('restaurantId', $this->id)->get()[0];
     }
 
+    public function images(){
+    	return $this->hasMany('App\Image', 'restaurantId');
+    }
+
     public function cuisine(){
     	return $this->belongsTo(Cuisine::class);
     }
