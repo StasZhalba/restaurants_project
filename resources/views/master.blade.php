@@ -92,7 +92,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
                         <li>
-                            <a href="https://github.com/andriyovchar/laravel" target="_blank">
+                            <a href="https://github.com/staszhalba/restaurants_project" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -100,8 +100,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; 2017 Andriy, Stas, Sasha</p>
-                    <p class="copyright text-muted">SoftGroup PHP-academy</p>
+                    <p class="copyright text-muted">Copyright &copy; 2017 StasZhalba</p>
                 </div>
             </div>
         </div>

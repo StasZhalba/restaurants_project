@@ -184,7 +184,61 @@ class AdminHomeController extends Controller
 		return redirect(route('admin.restaurantEditImg', ['id' => $image->restaurantId]));
 	}
 
+	public function cuisines(){
+		$cuisines = Cuisine::all();
+		return view('admin.cuisines', [
+			'cuisines' => $cuisines,
+		]);
+	}
+
+	public function cuisineAdd(){
+		return view('admin.addCuisine');
+	}
+
+	public function cuisineStore(Request $request){
+		$cuisine = new Cuisine();
+		$cuisine->cuisine_name = $request->cuisine_name;
+		$cuisine->save();
+
+		return \redirect(route('admin.cuisines'));
+	}
+
+	public function cuisineDelete($id)
+	{
+		Cuisine::where('id', $id)->delete();
+
+		return \redirect(route('admin.cuisines'));
+	}
+
+	public function dishes(){
+		$dishes = Dish::all();
+		return view('admin.dishes', [
+			'dishes' => $dishes,
+		]);
+	}
+
+	public function dishAdd(){
+		return view('admin.addDish');
+	}
+
+	public function dishStore(Request $request){
+		$this->validate(request(), [
+			'dish_name' => 'required',
+			'image' => 'required',
+			'dish_description' => 'required'
+		]);
+		$dish = new Dish;
+		$dish->dish_name = request('dish_name');
+		$path = $request->file('image')->store('images', 'uploads');
+		$dish->file_name = $path;
+		$dish->description = request('description');
+		$dish->save();
+		return \redirect(route('admin.dishAdd'));
+	}
+
     public function dashboard(){
     	return view('admin.dashboard');
     }
+
+
 }

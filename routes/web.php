@@ -31,15 +31,33 @@ Route::prefix('admin')->group(function (){
 	Route::get('/', 'AdminHomeController@index')->name('admin.dashboard');
 	Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'AdminAuth\LoginController@login')->name('admin.login.submit');
-	Route::get('/restaurants', 'AdminHomeController@restaurants')->name('admin.restaurants');
-	Route::get('/restaurants/add', 'AdminHomeController@restaurantAdd')->name('admin.restaurantAdd');
-	Route::post('/add_restaurant/store', 'AdminHomeController@store')->name('admin.restaurantStore');
-	Route::put('/restaurant/{id}/save/', 'AdminHomeController@saveRestaurant')->name('admin.restaurantSave');
-	Route::get('/restaurants/{del_rest_id}/delete', 'AdminHomeController@delete')->name('admin.restaurantDelete');
-	Route::get('/restaurants/edit/{id}', 'AdminHomeController@edit')->name('admin.restaurantEdit');
-	Route::get('/restaurants/edit/{id}/img', 'AdminHomeController@editImg')->name('admin.restaurantEditImg');
-	Route::get('/restaurants/delete/img/{id}', 'AdminHomeController@deleteImg')->name('admin.restaurantDeleteImg');
-});
+
+	Route::prefix('restaurants')->group(function (){
+		Route::get('/', 'AdminHomeController@restaurants')->name('admin.restaurants');
+		Route::get('/add', 'AdminHomeController@restaurantAdd')->name('admin.restaurantAdd');
+		Route::post('/store', 'AdminHomeController@store')->name('admin.restaurantStore');
+		Route::put('/{id}/save/', 'AdminHomeController@saveRestaurant')->name('admin.restaurantSave');
+		Route::get('/{del_rest_id}/delete', 'AdminHomeController@delete')->name('admin.restaurantDelete');
+		Route::get('/edit/{id}', 'AdminHomeController@edit')->name('admin.restaurantEdit');
+		Route::get('/edit/{id}/img', 'AdminHomeController@editImg')->name('admin.restaurantEditImg');
+		Route::get('/delete/img/{id}', 'AdminHomeController@deleteImg')->name('admin.restaurantDeleteImg');
+
+	});
+
+	Route::prefix('cuisines')->group(function (){
+		Route::get('/', 'AdminHomeController@cuisines')->name('admin.cuisines');
+		Route::get('/add', 'AdminHomeController@cuisineAdd')->name('admin.cuisineAdd');
+		Route::post('/store', 'AdminHomeController@cuisineStore')->name('admin.cuisineStore');
+		Route::get('/{id}/delete', 'AdminHomeController@cuisineDelete')->name('admin.cuisineDelete');
+	});
+
+	Route::prefix('dishes')->group(function (){
+		Route::get('/', 'AdminHomeController@dishes')->name('admin.dishes');
+		Route::get('/add', 'AdminHomeController@dishAdd')->name('admin.dishAdd');
+		Route::post('/store', 'AdminHomeController@dishStore')->name('admin.dishStore');
+		Route::get('/{id}/delete', 'AdminHomeController@dishDelete')->name('admin.dishDelete');
+	});
+	});
 
 Route::get('/', function(){
 	return view('main');

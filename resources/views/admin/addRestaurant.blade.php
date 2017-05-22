@@ -5,7 +5,7 @@
             <div class="col-md-6 portlets">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="pull-left">Quick Post</div>
+                        <div class="pull-left">Restaurant</div>
                         {{--<div class="widget-icons pull-right">
                             <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
                             <a href="#" class="wclose"><i class="fa fa-times"></i></a>

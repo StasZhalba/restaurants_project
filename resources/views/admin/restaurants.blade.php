@@ -6,7 +6,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Hover Table
+                        Restaurants
                     </header>
                     <table class="table table-hover">
                         <thead>
